@@ -1,0 +1,9 @@
+.gallery {
+    margin-top: 500px;
+    width: 70%;
+    margin: 0px auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

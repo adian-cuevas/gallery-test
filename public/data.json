@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Nombre de Imagen 1",
+        "pictureUrl": "/1.png",
+        "pictureDescription": "Descripcion de la Imagen 1"
+    },
+    {
+        "name": "Nombre de Imagen 2",
+        "pictureUrl": "/2.png",
+        "pictureDescription": "Descripcion de la Imagen 2"
+    },
+    {
+        "name": "Nombre de Imagen 3",
+        "pictureUrl": "/3.png",
+        "pictureDescription": "Descripcion de la Imagen 3"
+    },
+    {
+        "name": "Nombre de Imagen 4",
+        "pictureUrl": "/4.png",
+        "pictureDescription": "Descripcion de la Imagen 4"
+    },
+    {
+        "name": "Nombre de Imagen 5",
+        "pictureUrl": "/5.png",
+        "pictureDescription": "Descripcion de la Imagen 5"
+    }
+]
