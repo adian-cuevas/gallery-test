@@ -11,6 +11,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
+import ICardPicture from "../Interfaces/ICardPicture";
+import { useDispatch } from "react-redux";
+import { deletePicture } from "../features/pictures/pictureSlice";
 
 const style = {
   margin: "10px",
@@ -26,6 +29,7 @@ interface PictureCardProps {
 
 const PictureCard = ({ picture }: PictureCardProps) => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -46,10 +50,20 @@ const PictureCard = ({ picture }: PictureCardProps) => {
   const [description, setDescription] = useState(picture.pictureDescription);
 
   const handleSave = () => {
-    console.log("Imagen guardada:", picture.name);
+    const pictureInfo: ICardPicture = {
+      name: picture.name,
+      pictureUrl: picture.pictureUrl,
+      pictureDescription: picture.pictureDescription,
+    };
+    localStorage.setItem(
+      `foto-${pictureInfo.name}`,
+      JSON.stringify(pictureInfo)
+    );
   };
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    dispatch(deletePicture(picture.name));
+  };
 
   const handleModify = () => {
     setDescription(newDescription);
