@@ -40,7 +40,20 @@ export default function DrawerAppBar(props: Props) {
   const [newDescription, setNewDescription] = useState("");
 
   const handlePickerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPicker(event.target.value);
+    //const file = event.target.files && event.target.files[0];
+
+    if (!event.target.files) return;
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        console.log(event.target?.result);
+        const result = event.target?.result as string;
+        setPicker(result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewTitle(event.target.value);
@@ -62,6 +75,9 @@ export default function DrawerAppBar(props: Props) {
   };
 
   const handleClose = () => {
+    setPicker("");
+    setNewTitle("");
+    setNewDescription("");
     setOpen(false);
   };
 
@@ -163,7 +179,7 @@ export default function DrawerAppBar(props: Props) {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Agregar Foto</DialogTitle>
         <DialogContent>
-          <input type="file" value={picker} onChange={handlePickerChange} />
+          <input type="file" onChange={handlePickerChange} />
           <TextField
             autoFocus
             margin="dense"
