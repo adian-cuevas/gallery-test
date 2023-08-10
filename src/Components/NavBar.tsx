@@ -20,7 +20,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useState } from "react";
 import { Counter } from "../features/counter/Counter";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addPicture } from "../features/pictures/pictureSlice";
 import ICardPicture from "../Interfaces/ICardPicture";
 
@@ -32,8 +32,6 @@ const drawerWidth = 240;
 
 export default function DrawerAppBar(props: Props) {
   const dispatch = useDispatch();
-  const pictures = useSelector((state) => state.pictures);
-  console.log(pictures);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
 
